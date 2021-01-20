@@ -1,6 +1,19 @@
 # SIG-Inventory
+Projeto da diciplina - DCT1106 - Programação
 
+Universidade Federal do Rio Grande do Norte
+
+Centro de Ensino Superior do Seridó
+
+Departamento de Computação e Tecnologia
+
+Projeto Sistema de Gestão de Estoque
+
+Developed by @macielsaints - Jan, 2021
+
+-----------------------------------
 Um Sistema de Controle de Estoques
+-----------------------------------
 
 As empresas da atualidade utilizam complexos sistemas gerenciais para, entre várias
 outras funções, gerenciar seu estoque de produtos. Gerenciar estoques de maneira eficiente,
