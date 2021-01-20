@@ -33,7 +33,7 @@ void telaSobre(void) {
 	printf("█                   Centro de Ensino Superior do Seridó                       █\n");
 	printf("█                 Departamento de Computação e Tecnologia                     █\n");
 	printf("█         Projeto SIG-Inventory: Um Sistema de Controle de Estoques           █\n");
-	printf("█                   Developed by @MacielSaints - Oct, 2020                    █\n");
+	printf("█                   Developed by @MacielSaints - Jan, 2021                    █\n");
 	printf("█                                                                             █\n");
 	printf("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n");
 
