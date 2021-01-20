@@ -10,6 +10,7 @@ Departamento de Computação e Tecnologia
 Projeto Sistema de Gestão de Estoque
 
 Developed by @macielsaints - Jan, 2021
+Sistemas de Informação.
 
 -----------------------------------
 Um Sistema de Controle de Estoques
