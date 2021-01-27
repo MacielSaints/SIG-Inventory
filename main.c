@@ -69,6 +69,7 @@ char telaMenuInicial(void) {
 
 
 char login (void) {
+  printf("\033[2J\033[1;1H");
 	printf("\n\n\nLogin.\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -78,7 +79,8 @@ char login (void) {
 }
 
 char novoUsuario (void) {
-	printf("\n\n\nNovo Usuário\n\n\n");
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nNovo Usuário.\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -87,6 +89,7 @@ char novoUsuario (void) {
 }
 
 char sair (void) {
+  printf("\033[2J\033[1;1H");
 	printf("\n\n\nAté Logo  õ/.\n\n\n");
 	printf("\n");
 	getchar();
