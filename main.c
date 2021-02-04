@@ -5,45 +5,35 @@
 ///               Departamento de Computação e Tecnologia                   ///
 ///                  Disciplina DCT1106 -- Programação                      ///
 ///      Projeto SIG-Inventory: Um Sistema de Controle de Estoques          ///
-///                Developed by @MacielSaints - Oct, 2020                   ///
+///                Developed by @MacielSaints - Jan, 2021                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-char menuInicial(void);
-char telaMenuInicial(void);
-void telaSobre(void);
-char menuPrincipal(void);
-char login (void);
+char menuInicial (void);
+
+char telaMenuInicial (void);
+void telaSobre (void);
+char telaLogin (void);
+
 char novoUsuario (void);
+char id[50];
+char cpf[13];
 char sair (void);
+
+char funcaoLogin (void);
+char funcaoCpf (void);
 
 
 int main(void) {
 
 		menuInicial();
-  
+
 	return 0;
 }
 
-char menuInicial(void) {
-	char opcao;
-	do {
-		opcao = telaMenuInicial();
-		switch (opcao) {
-			case '1' : 	login();
-						break;
-			case '2' : 	novoUsuario();
-						break;
-      case '3' : 	telaSobre();
-						break;            
-			case '0' : 	sair();
-						break;
-		}
-	} while (opcao != '0');
-  return 0;
-}
 
 char telaMenuInicial(void) {
 	char op;
@@ -67,16 +57,63 @@ char telaMenuInicial(void) {
 	return op;
 }
 
-
-char login (void) {
-  printf("\033[2J\033[1;1H");
-	printf("\n\n\nLogin.\n\n\n");
-	printf("\n");
-	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
+char menuInicial(void) {
+	char opcao;
+	do {
+		opcao = telaMenuInicial();
+		switch (opcao) {
+			case '1' : 	telaLogin();
+						break;
+			case '2' : 	novoUsuario();
+						break;
+      case '3' : 	telaSobre();
+						break;
+			case '0' : 	sair();
+						break;
+		}
+	} while (opcao != '0');
   return 0;
 }
+
+
+char telaLogin (void) {
+  printf("\033[2J\033[1;1H");
+	printf("╔═════════════════════════════════╗\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("╚═════════════════════════════════╝\n");
+	printf("╔═════════════════════════════════╗\n");
+  printf("║              LOGIN              ║\n");
+  printf("╚═════════════════════════════════╝\n");
+
+  printf("Informe seu login:");
+  funcaoLogin();
+    printf("Você digitou: '%s'\n",id);
+
+  printf("Informe seu CPF:");
+  funcaoCpf();
+  printf("Você digitou: '%s'\n", cpf);
+  getchar();
+
+  menuInicial();
+  return 0;
+}
+
+
+char funcaoLogin (void) {
+
+  fgets(id, sizeof(id), stdin);
+
+  return 0;
+}
+
+
+char funcaoCpf (void) {
+
+  fgets(cpf, sizeof(cpf), stdin);
+
+  return 0;
+}
+
 
 char novoUsuario (void) {
   printf("\033[2J\033[1;1H");
@@ -88,11 +125,11 @@ char novoUsuario (void) {
   return 0;
 }
 
+
 char sair (void) {
   printf("\033[2J\033[1;1H");
 	printf("\n\n\nAté Logo  õ/.\n\n\n");
-	printf("\n");
-	getchar();
+
   return 0;
 }
 
