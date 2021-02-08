@@ -89,7 +89,7 @@ char telaLogin (void) {
   funcaoLogin();
     printf("Você digitou: '%s'\n",id);
 
-  printf("Informe seu CPF:");
+  printf("Informe seu CPF: ");
   funcaoCpf();
   printf("Você digitou: '%s'\n", cpf);
   getchar();
