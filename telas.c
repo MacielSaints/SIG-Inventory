@@ -1,6 +1,19 @@
 #include<stdio.h>
 
 
+
+
+char novoUsuario (void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nNovo Usuário.\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+  return 0;
+}
+
+
 void telaSobre(void) {
   printf("\033[2J\033[1;1H");
 	printf("\n");

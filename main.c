@@ -36,8 +36,6 @@ int main(void) {
 }
 
 
-
-
 char menuInicial(void) {
 	char opcao;
 	do {
@@ -114,22 +112,3 @@ char telaMenuInicial(void) {
 	getchar();
 	return op;
 }
-
-
-char novoUsuario (void) {
-  printf("\033[2J\033[1;1H");
-	printf("\n\n\nNovo Usuário.\n\n\n");
-	printf("\n");
-	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
-  return 0;
-}
-
-char sair (void) {
-  printf("\033[2J\033[1;1H");
-	printf("\n\n\nAté Logo  õ/.\n\n\n");
-
-  return 0;
-}
-
