@@ -90,25 +90,3 @@ char funcaoCpf (void) {
 
   return 0;
 }
-
-char telaMenuInicial(void) {
-	char op;
-  printf("\033[2J\033[1;1H");
-	printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
-
-  printf("╔══════════════════════════════════╗\n");
-  printf("║ ████████     MENU      █████████ ║\n");
-  printf("║══════════════════════════════════║\n");
-  printf("║          1 - Login               ║\n");
-  printf("║          2 - Novo Usuário        ║\n");
-  printf("║          3 - Sober               ║\n");
-  printf("║          0 - Exit                ║\n");
-  printf("╚══════════════════════════════════╝\n");
-  printf("~>: ");
-  scanf("%c", &op);
-	printf("\n");
-	getchar();
-	return op;
-}
