@@ -67,6 +67,10 @@ char menuInicial(void) {
   return 0;
 }
 
+//
+/// Tela de login
+//
+
 char telaLogin (void) {
   printf("\033[2J\033[1;1H");
 	printf("╔═════════════════════════════════╗\n");
