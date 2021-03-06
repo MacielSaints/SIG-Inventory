@@ -1,4 +1,3 @@
-  
 ///////////////////////////////////////////////////////////////////////////////
 ///             Universidade Federal do Rio Grande do Norte                 ///
 ///                 Centro de Ensino Superior do Seridó                     ///
@@ -8,11 +7,20 @@
 ///                Developed by @MacielSaints - Jan, 2021                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
+// %[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]
+
+//
+/// BIBLIOTECAS
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "telas.h"
+#include "valid.h"
 
+//
+/// FUÇÕES
+//
 char menuInicial (void);
 
 char telaMenuInicial (void);
@@ -21,13 +29,15 @@ char telaLogin (void);
 
 char novoUsuario (void);
 char id[50];
-char cpf[13];
+char  cpf[12];
 
 
-char funcaoLogin (void);
-char funcaoCpf (void);
+//char funcaoLogin (void);
 
 
+//
+/// Função Principal
+//
 int main(void) {
 
 		menuInicial();
@@ -35,6 +45,9 @@ int main(void) {
 	return 0;
 }
 
+//
+/// CRUD
+//
 
 char menuInicial(void) {
 	char opcao;
@@ -64,29 +77,15 @@ char telaLogin (void) {
   printf("╚═════════════════════════════════╝\n");
 
   printf("Informe seu login:");
-  funcaoLogin();
-    printf("Você digitou: '%s'\n",id);
-
-  printf("Informe seu CPF: ");
-  funcaoCpf();
+  scanf("%s", id);
+  printf("Você digitou: '%s'\n",id);
+  
+  printf("Digite o cpf: ");  
+  scanf(" %s",cpf);
+  validaCpf(cpf);
   printf("Você digitou: '%s'\n", cpf);
   getchar();
 
   menuInicial();
-  return 0;
-}
-
-char funcaoLogin (void) {
-
-  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", id);
-
-  return 0;
-}
-
-
-char funcaoCpf (void) {
-
-  fgets(cpf, sizeof(cpf), stdin);
-
   return 0;
 }

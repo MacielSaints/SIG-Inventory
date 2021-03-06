@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////
+///             Universidade Federal do Rio Grande do Norte                 ///
+///                 Centro de Ensino Superior do Seridó                     ///
+///               Departamento de Computação e Tecnologia                   ///
+///                  Disciplina DCT1106 -- Programação                      ///
+///      Projeto SIG-Inventory: Um Sistema de Controle de Estoques          ///
+///                Developed by @MacielSaints - Jan, 2021                   ///
+///////////////////////////////////////////////////////////////////////////////
+
 #include<stdio.h>
 
 char telaMenuInicial(void) {
@@ -21,8 +30,6 @@ char telaMenuInicial(void) {
 	getchar();
 	return op;
 }
-
-
 
 char novoUsuario (void) {
   printf("\033[2J\033[1;1H");
