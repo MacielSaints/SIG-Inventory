@@ -89,6 +89,7 @@ int validaCpf (char n[])
   {
     printf("CPF INVÁLIDO.\n");
     getchar();
+    return 1;
   
   }
 

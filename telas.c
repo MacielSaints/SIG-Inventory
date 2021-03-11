@@ -31,16 +31,99 @@ char telaMenuInicial(void) {
 	return op;
 }
 
+char telaEstoque(void) {
+	char op;
+  printf("\033[2J\033[1;1H");
+	printf("╔═════════════════════════════════╗\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("╚═════════════════════════════════╝\n");
+
+  printf("╔══════════════════════════════════╗\n");
+  printf("║ ████  CONTROLE DE ESTOQUE  █████ ║\n");
+  printf("║══════════════════════════════════║\n");
+  printf("║       1 - Pesquisar              ║\n");
+  printf("║       2 - Cadastrar              ║\n");
+  printf("║       3 - Computar Entrada       ║\n");
+  printf("║       4 - Computar Saída         ║\n");
+  printf("║       5 - Excluir                ║\n");
+  printf("║       6 - Atualizar              ║\n");
+  printf("║       7 - Voltar                 ║\n");
+  printf("║       0 - Exit                   ║\n");
+  printf("╚══════════════════════════════════╝\n");
+  printf("~>: ");
+  scanf("%c", &op);
+	printf("\n");
+	getchar();
+	return op;
+}
+
 char novoUsuario (void) {
   printf("\033[2J\033[1;1H");
-	printf("\n\n\nNovo Usuário.\n\n\n");
-	printf("\n");
+	printf("╔═════════════════════════════════╗\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("╚═════════════════════════════════╝\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
   return 0;
 }
 
+
+char telaSair (void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nAté Logo  õ/.\n\n\n");
+
+  return 0;
+}
+
+void pesquisar(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Pesquisar\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void cadastrar(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Cadastrar\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void entrada(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Computar Entrada\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void saida(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Computar Saída\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void excluir(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Excluir\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void atualizar(void) {
+  printf("\033[2J\033[1;1H");
+	printf("\n\n\nMódulo Atualizar \n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
 
 void telaSobre(void) {
   printf("\033[2J\033[1;1H");
@@ -77,11 +160,4 @@ void telaSobre(void) {
   printf("\n");
   printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
   getchar();
-}
-
-char telaSair (void) {
-  printf("\033[2J\033[1;1H");
-	printf("\n\n\nAté Logo  õ/.\n\n\n");
-
-  return 0;
 }

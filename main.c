@@ -27,6 +27,8 @@ char telaMenuInicial (void);
 
 char telaLogin (void);
 
+char estoque(void);
+
 char novoUsuario (void);
 char id[50];
 char  cpf[12];
@@ -46,7 +48,7 @@ int main(void) {
 }
 
 //
-/// CRUD
+/// CRUDs
 //
 
 char menuInicial(void) {
@@ -59,6 +61,32 @@ char menuInicial(void) {
 			case '2' : 	novoUsuario();
 						break;
       case '3' : 	telaSobre();
+						break;
+			case '0' : 	telaSair();
+						break;
+		}
+	} while (opcao != '0');
+  return 0;
+}
+
+char estoque() {
+	char opcao;
+	do {
+		opcao = telaEstoque();
+		switch (opcao) {
+			case '1' : 	pesquisar();
+						break;
+			case '2' : 	cadastrar();
+						break;
+      case '3' : 	entrada();
+						break;
+      case '4' : 	saida();
+						break;
+      case '5' : 	excluir();
+						break;
+      case '6' : 	atualizar();
+						break;
+      case '7' : 	telaMenuInicial();
 						break;
 			case '0' : 	telaSair();
 						break;
@@ -90,6 +118,12 @@ char telaLogin (void) {
   printf("Você digitou: '%s'\n", cpf);
   getchar();
 
-  menuInicial();
+// 
+//
+/// VALIDAÇÃO DE ENTRADA NO SISTEMA - EM DESESMOVIMENTO.
+//
+//
+//
+  estoque();
   return 0;
 }
