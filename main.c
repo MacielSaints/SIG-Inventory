@@ -52,7 +52,7 @@ int main(void) {
 //
 
 char menuInicial(void) {
-	char opcao;
+	char opcao = {0};
 	do {
 		opcao = telaMenuInicial();
 		switch (opcao) {
@@ -70,7 +70,7 @@ char menuInicial(void) {
 }
 
 char estoque() {
-	char opcao;
+	char opcao = {0};
 	do {
 		opcao = telaEstoque();
 		switch (opcao) {

@@ -53,10 +53,10 @@ int validaCpf (char n[])
     digito1=0;  
   }
   
-  else  
-  {  
-    digito1 = 11-result1;  
-  }
+    else  
+    {  
+      digito1 = 11-result1;  
+    }
   
   //SEGUNDO DIGITO.
   somador=0;  
@@ -74,10 +74,10 @@ int validaCpf (char n[])
     digito2=0;  
   }  
     
-  else  
-  {  
-    digito2=11-result2;  
-  }  
+    else  
+    {  
+      digito2=11-result2;  
+    }
     
   //RESULTADOS DA VALIDACAO.
   if((digito1==icpf[9]) && (digito2==icpf[10]))  
@@ -85,13 +85,12 @@ int validaCpf (char n[])
     printf("\nCPF VALIDADO.\n");
     getchar();
   }  
-  else
-  {
-    printf("CPF INVÁLIDO.\n");
-    getchar();
-    return 1;
-  
-  }
+    else
+    {
+      printf("CPF INVÁLIDO.\n");
+      getchar();
+      return 1;
+    }
 
   return 0;  
 }

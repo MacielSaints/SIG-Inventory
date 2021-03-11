@@ -10,7 +10,7 @@
 #include<stdio.h>
 
 char telaMenuInicial(void) {
-	char op;
+	char op = {0};
   printf("\033[2J\033[1;1H");
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
@@ -32,7 +32,7 @@ char telaMenuInicial(void) {
 }
 
 char telaEstoque(void) {
-	char op;
+	char op = {0};
   printf("\033[2J\033[1;1H");
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
@@ -48,7 +48,6 @@ char telaEstoque(void) {
   printf("║       5 - Excluir                ║\n");
   printf("║       6 - Atualizar              ║\n");
   printf("║       7 - Voltar                 ║\n");
-  printf("║       0 - Exit                   ║\n");
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");
   scanf("%c", &op);
