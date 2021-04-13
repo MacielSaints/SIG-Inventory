@@ -8,10 +8,17 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include<stdio.h>
+#include "estoque.h"
+
+
+
+
+#define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
+
 
 char telaMenuInicial(void) {
 	char op = {0};
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
@@ -33,7 +40,7 @@ char telaMenuInicial(void) {
 
 char telaEstoque(void) {
 	char op = {0};
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
@@ -57,7 +64,7 @@ char telaEstoque(void) {
 }
 
 char novoUsuario (void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
@@ -69,14 +76,14 @@ char novoUsuario (void) {
 
 
 char telaSair (void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nAté Logo  õ/.\n\n\n");
 
   return 0;
 }
 
 void pesquisar(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nMódulo Pesquisar\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -84,15 +91,11 @@ void pesquisar(void) {
 	getchar();
 }
 void cadastrar(void) {
-  printf("\033[2J\033[1;1H");
-	printf("\n\n\nMódulo Cadastrar\n\n\n");
-	printf("\n");
-	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
+  printf(clear);
+  cadastraProduto();
 }
 void entrada(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nMódulo Computar Entrada\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -100,7 +103,7 @@ void entrada(void) {
 	getchar();
 }
 void saida(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nMódulo Computar Saída\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -108,7 +111,7 @@ void saida(void) {
 	getchar();
 }
 void excluir(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nMódulo Excluir\n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -116,7 +119,7 @@ void excluir(void) {
 	getchar();
 }
 void atualizar(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n\n\nMódulo Atualizar \n\n\n");
 	printf("\n");
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
@@ -125,7 +128,7 @@ void atualizar(void) {
 }
 
 void telaSobre(void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("\n");
 	printf("█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n");
 	printf("█                             █ █ █▀▀ █▀▀█ █▄ █                               █\n");

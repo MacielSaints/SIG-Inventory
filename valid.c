@@ -7,9 +7,11 @@
 ///                Developed by @MacielSaints - Jan, 2021                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
+//----------------------------------------------------
 //
 /// VALIDADOR CPF.
 //
+//----------------------------------------------------
 
 /*
 Função encontrada no site:
@@ -22,6 +24,7 @@ E adaptada por @macielSaints
 */
 
 #include <stdio.h>
+#include <string.h>
 
 
   
@@ -84,7 +87,7 @@ int validaCpf (char n[])
   {  
     printf("\nCPF VALIDADO.\n");
     getchar();
-  }  
+  }
     else
     {
       printf("CPF INVÁLIDO.\n");
@@ -93,4 +96,83 @@ int validaCpf (char n[])
     }
 
   return 0;  
+}
+//----------------------------------------------------
+//
+/// VALIDADOR DATA.
+//
+//----------------------------------------------------
+
+// Função adaptada do material visto na diciplina - DCT1106 - Programação.
+
+
+int dataValida(int dd, int mm, int aa) {
+  int maiorDia;
+  int bissexto(int);
+  if (aa < 0 || mm < 1 || mm > 12 || dd < 1) {
+    return 0;
+  }
+  if (mm == 2) {
+    if (bissexto(aa)) {
+      maiorDia = 29;
+    } else {
+      maiorDia = 28;
+    }
+  } else if (mm == 4 || mm == 6 || mm == 9 || mm == 11) {
+    maiorDia = 30;
+  } else {
+    maiorDia = 31;
+  }
+  if (dd > maiorDia) {
+    return 0;
+  }
+ return 1;
+}
+
+//----------------------------------------------------
+//
+/// valida ANO.
+//
+//----------------------------------------------------
+
+int bissexto(int aa) {
+  if ((aa % 4 == 0) && (aa % 100 != 0)) {
+    return 1;
+  } else if (aa % 400 == 0) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+//----------------------------------------------------
+//
+/// VALIDADOR NUMEROS.
+//
+//----------------------------------------------------
+
+int ehDigito(char c) {
+  return (c>='0' && c<='9');
+}
+
+//----------------------------------------------------
+//
+/// VALIDADOR LETRAS.
+//
+//----------------------------------------------------
+
+int ehLetra(char *c){
+    int tam = strlen(c);
+    char letra;
+    for (int i = 0; i < tam; i++) {
+        letra = c[i];
+        if (letra >='A' && letra <='Z') {
+            return 1;
+        } else if (letra >='a' && letra <='z') {
+            return 1;
+        }else {
+            return 0;
+        }
+     }
+  return 0;
 }

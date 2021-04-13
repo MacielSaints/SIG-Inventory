@@ -1,0 +1,1 @@
+void cadastraProduto (void);

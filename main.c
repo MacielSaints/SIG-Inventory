@@ -9,18 +9,35 @@
 
 // %[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]
 
+
+
+//----------------------------------------------------
 //
 /// BIBLIOTECAS
 //
+//----------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "telas.h"
 #include "valid.h"
 
+//----------------------------------------------------
+//
+/// DEFINIÇÕES ESTRUTURAS
+//
+//----------------------------------------------------
+
+#define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
+
+//----------------------------------------------------
 //
 /// FUÇÕES
 //
+//----------------------------------------------------
+
 char menuInicial (void);
 
 char telaMenuInicial (void);
@@ -29,17 +46,21 @@ char telaLogin (void);
 
 char estoque(void);
 
+void Indisponivel(void);
+
 char novoUsuario (void);
 char id[50];
 char  cpf[12];
 
+void cadastraProduto (void);
 
-//char funcaoLogin (void);
 
-
+//----------------------------------------------------
 //
 /// Função Principal
 //
+//----------------------------------------------------
+
 int main(void) {
 
 		menuInicial();
@@ -47,10 +68,12 @@ int main(void) {
 	return 0;
 }
 
+//----------------------------------------------------
 //
 /// CRUDs
 //
-
+//----------------------------------------------------
+ 
 char menuInicial(void) {
 	char opcao = {0};
 	do {
@@ -65,8 +88,9 @@ char menuInicial(void) {
 			case '0' : 	telaSair();
 						break;
 		}
-	} while (opcao != '0');
-  return 0;
+	} while (opcao != '0' );
+
+  return 1;
 }
 
 char estoque() {
@@ -92,15 +116,18 @@ char estoque() {
 						break;
 		}
 	} while (opcao != '0');
-  return 0;
+
+  return 1;
 }
 
+//----------------------------------------------------
 //
 /// Tela de login
 //
+//----------------------------------------------------
 
 char telaLogin (void) {
-  printf("\033[2J\033[1;1H");
+  printf(clear);
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
@@ -110,10 +137,12 @@ char telaLogin (void) {
 
   printf("Informe seu login:");
   scanf("%s", id);
+  ehLetra(id);
   printf("Você digitou: '%s'\n",id);
   
-  printf("Digite o cpf: ");  
+  printf("Digite o cpf: ");
   scanf(" %s",cpf);
+  ehDigito(cpf);
   validaCpf(cpf);
   printf("Você digitou: '%s'\n", cpf);
   getchar();
@@ -127,3 +156,8 @@ char telaLogin (void) {
   estoque();
   return 0;
 }
+
+void Indisponivel(void) {
+    printf("OPÇÃO INDISPONÍVEL!!!\n");
+}
+
