@@ -98,7 +98,7 @@ char estoque() {
 	do {
 		opcao = telaEstoque();
 		switch (opcao) {
-			case '1' : 	pesquisar();
+			case '1' : 	lista();
 						break;
 			case '2' : 	cadastrar();
 						break;
@@ -128,9 +128,7 @@ char estoque() {
 
 char telaLogin (void) {
   printf(clear);
-	printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
+	sig();
 	printf("╔═════════════════════════════════╗\n");
   printf("║              LOGIN              ║\n");
   printf("╚═════════════════════════════════╝\n");
@@ -142,12 +140,12 @@ char telaLogin (void) {
   
   printf("Digite o cpf: ");
   scanf(" %s",cpf);
-  ehDigito(cpf);
   validaCpf(cpf);
   printf("Você digitou: '%s'\n", cpf);
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
   getchar();
 
-// 
+//
 //
 /// VALIDAÇÃO DE ENTRADA NO SISTEMA - EM DESESMOVIMENTO.
 //

@@ -10,18 +10,18 @@
 #include<stdio.h>
 #include "estoque.h"
 
-
-
-
 #define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
 
+void sig(void) {
+	printf("╔═════════════════════════════════╗\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("╚═════════════════════════════════╝\n");
+}
 
 char telaMenuInicial(void) {
 	char op = {0};
   printf(clear);
-	printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
+  sig();
 
   printf("╔══════════════════════════════════╗\n");
   printf("║ ████████     MENU      █████████ ║\n");
@@ -41,14 +41,12 @@ char telaMenuInicial(void) {
 char telaEstoque(void) {
 	char op = {0};
   printf(clear);
-	printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
+  sig();
 
   printf("╔══════════════════════════════════╗\n");
   printf("║ ████  CONTROLE DE ESTOQUE  █████ ║\n");
   printf("║══════════════════════════════════║\n");
-  printf("║       1 - Pesquisar              ║\n");
+  printf("║       1 - Listar                 ║\n");
   printf("║       2 - Cadastrar              ║\n");
   printf("║       3 - Computar Entrada       ║\n");
   printf("║       4 - Computar Saída         ║\n");
@@ -65,9 +63,7 @@ char telaEstoque(void) {
 
 char novoUsuario (void) {
   printf(clear);
-	printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
+  sig();
 	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
@@ -82,12 +78,9 @@ char telaSair (void) {
   return 0;
 }
 
-void pesquisar(void) {
+void lista(void) {
   printf(clear);
-	printf("\n\n\nMódulo Pesquisar\n\n\n");
-	printf("\n");
-	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  listaProdutos();
 	getchar();
 }
 void cadastrar(void) {
