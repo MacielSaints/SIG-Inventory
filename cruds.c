@@ -7,8 +7,6 @@
 ///                Developed by @MacielSaints - Jan, 2021                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
-// %[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]
-
 //----------------------------------------------------
 //
 /// BIBLIOTECAS
@@ -16,29 +14,75 @@
 //----------------------------------------------------
 
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "telas.h"
-#include "cruds.h"
+#include "valid.h"
+#include "estoque.h"
 #include "usuario.h"
 
 
 //----------------------------------------------------
 //
-/// Definição de Funções
+/// CRUDs
 //
 //----------------------------------------------------
 
-char menuInicial (void);
 
 
-//----------------------------------------------------
-//
-/// Função Principal
-//
-//----------------------------------------------------
 
-int main(void) {
+char menuInicial(void) {
+	char op;
+  User* aux;
 
-	menuInicial();
-  //estoque();
-	return 0;
+  do {
+    op = telaMenuInicial();
+
+    switch (op) {
+    case '1': aux = buscaUser();
+              loginUser(aux);
+              break;
+    case '2': 
+    aux = preencheUser();
+              gravaUser(aux);
+              break;
+    case '3': telaSobre();
+              break;
+    case '0': telaSair();
+               break;
+    }
+  } while (op != '0');
+  free(aux);
+return 0;
 }
+
+
+char estoque(void) {
+	char op;
+
+	do {
+		op = telaEstoque();
+
+		switch (op) {
+			case '1' : 	lista();
+			  break;
+			case '2' : 	cadastrar();
+        break;
+      case '3' : 	entrada();
+				break;
+      case '4' : 	saida();
+		  	break;
+      case '5' : 	excluir();
+			  break;
+      case '6' : 	atualizar();
+			  break;
+      case '7' : 	telaMenuInicial();
+				break;
+			case '0' : 	telaSair();
+				break;
+		} 		
+	} while (op != '0');
+return op;
+}
+
+

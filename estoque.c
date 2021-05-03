@@ -1,8 +1,26 @@
+///////////////////////////////////////////////////////////////////////////////
+///             Universidade Federal do Rio Grande do Norte                 ///
+///                 Centro de Ensino Superior do Seridó                     ///
+///               Departamento de Computação e Tecnologia                   ///
+///                  Disciplina DCT1106 -- Programação                      ///
+///      Projeto SIG-Inventory: Um Sistema de Controle de Estoques          ///
+///                Developed by @MacielSaints - Jan, 2021                   ///
+///////////////////////////////////////////////////////////////////////////////
+
+//----------------------------------------------------
+//
+/// BIBLIOTECAS
+//
+//----------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "valid.h"
 #include "telas.h"
+#include "cruds.h"
+#include "usuario.h"
 
 //----------------------------------------------------
 //
@@ -11,6 +29,8 @@
 //----------------------------------------------------
 
 #define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
+#define True 1
+#define False 0
 
 typedef struct produtos Produtos;
 typedef struct Produtos prod;
@@ -29,6 +49,8 @@ struct produtos {
   int dia;
   int mes;
   int ano;
+  char status;
+
 };
 
 
@@ -43,7 +65,7 @@ void cadastraProduto (void) {
   Produtos* prod;
   prod = (Produtos*) malloc(sizeof(Produtos));
   FILE *fp;
-  fp = fopen("Produtos.txt", "a + t");
+  fp = fopen("Produtos.txt", "at");
 
 	if (fp == NULL){
 		printf("Erro na criacao do arquivo\n!");
@@ -79,6 +101,12 @@ void cadastraProduto (void) {
   telaEstoque();
 }
 
+//----------------------------------------------------
+//
+/// FUNÇÃO LISTA DE PRODUTOS
+//
+//----------------------------------------------------
+
 void listaProdutos (void) {
 
   printf(clear);
@@ -90,9 +118,7 @@ void listaProdutos (void) {
   }
   prod = (Produtos*) malloc(sizeof(Produtos));
 
-  printf("╔═════════════════════════════════╗\n");
-  printf("║          SIG-Inventory          ║\n");
-  printf("╚═════════════════════════════════╝\n");
+  sig();
   
   while (fread(prod, sizeof(Produtos), 1, fp)) {
 
@@ -103,7 +129,6 @@ void listaProdutos (void) {
     printf("    Valor: R$:%f\n", prod->valor);
     printf("╚═══════════════════════════════════════════════════════════════════╝\n");
     printf("\n\n");
-            
   }
 
   fclose(fp);

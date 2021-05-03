@@ -7,19 +7,64 @@
 ///                Developed by @MacielSaints - Jan, 2021                   ///
 ///////////////////////////////////////////////////////////////////////////////
 
+//----------------------------------------------------
+//
+/// BIBLIOTECAS
+//
+//----------------------------------------------------
+
 #include<stdio.h>
+#include <stdlib.h>
+
 #include "estoque.h"
+#include "cruds.h"
+#include "valid.h"
+#include "usuario.h"
+
+
+//----------------------------------------------------
+//
+/// DEFINIÇÕES
+//
+//----------------------------------------------------
 
 #define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
 
-void sig(void) {
+//----------------------------------------------------
+//
+/// TELAS
+//
+//----------------------------------------------------
+
+char sig(void) {
+  printf(clear);
 	printf("╔═════════════════════════════════╗\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
+  return 0;
+}
+
+char telaBemVindo(void) {
+  printf(clear);
+	printf("╔═════════════════════════════════╗\n");
+  printf("║           BEM VINDO             ║\n");
+  printf("║               AO                ║\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("╚═════════════════════════════════╝\n");
+  return 0;
+}
+
+char telaSigLogin(void) {
+  printf(clear);
+	printf("╔═════════════════════════════════╗\n");
+  printf("║          SIG-Inventory          ║\n");
+  printf("║             LOGIN               ║\n");
+  printf("╚═════════════════════════════════╝\n");
+  return 0;
 }
 
 char telaMenuInicial(void) {
-	char op = {0};
+	char op;
   printf(clear);
   sig();
 
@@ -38,8 +83,19 @@ char telaMenuInicial(void) {
 	return op;
 }
 
+char telaLogin (void) {
+  printf(clear);
+	sig();
+
+	printf("╔═════════════════════════════════╗\n");
+  printf("║              LOGIN              ║\n");
+  printf("╚═════════════════════════════════╝\n");
+  
+  return 0;
+}
+
 char telaEstoque(void) {
-	char op = {0};
+	char op;
   printf(clear);
   sig();
 
@@ -58,35 +114,41 @@ char telaEstoque(void) {
   scanf("%c", &op);
 	printf("\n");
 	getchar();
+
 	return op;
 }
 
-char novoUsuario (void) {
+char telaNovoUsuario (void) {
   printf(clear);
   sig();
-	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
-	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-	getchar();
+  printf("╔═════════════════════════════════╗\n");
+  printf("║        CADASTRO DE USUÁRIO      ║\n");
+  printf("╚═════════════════════════════════╝\n");
+
   return 0;
 }
 
 
 char telaSair (void) {
-  printf(clear);
-	printf("\n\n\nAté Logo  õ/.\n\n\n");
+  sig();
+	printf("\n\n\n            Até Logo  õ/.\n\n\n");
 
-  return 0;
+  exit(1);
 }
 
 void lista(void) {
   printf(clear);
   listaProdutos();
-	getchar();
 }
 void cadastrar(void) {
   printf(clear);
   cadastraProduto();
 }
+
+void Indisponivel(void) {
+    printf("OPÇÃO INDISPONÍVEL!!!\n");
+}
+
 void entrada(void) {
   printf(clear);
 	printf("\n\n\nMódulo Computar Entrada\n\n\n");

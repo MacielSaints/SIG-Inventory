@@ -9,6 +9,30 @@
 
 //----------------------------------------------------
 //
+/// DEFINIÇÕES ESTRUTURAS
+//
+//----------------------------------------------------
+
+#define clear "\033[2J\033[1;1H" // PARÂMETRO PARA LIMPAR TELA
+#define True 1
+#define False 0
+
+//----------------------------------------------------
+//
+/// BIBLIOTECAS
+//
+//----------------------------------------------------
+
+#include <stdio.h>
+#include <string.h>
+
+#include "telas.h"
+#include "cruds.h"
+#include "estoque.h"
+#include "usuario.h"
+
+//----------------------------------------------------
+//
 /// VALIDADOR CPF.
 //
 //----------------------------------------------------
@@ -23,16 +47,11 @@ Em 05/03/2021
 E adaptada por @macielSaints
 */
 
-#include <stdio.h>
-#include <string.h>
-
-
-  
 int validaCpf (char n[])
 {
   //char cpf[12]; 
   int icpf[12];
-  int i,somador=0,digito1,result1,result2,digito2,valor; 
+  int i,somador=0,digito1,result1,result2,digito2,valor;
 
   //printf("Digite o cpf: ");  
   //scanf(" %s",cpf);
@@ -40,51 +59,51 @@ int validaCpf (char n[])
   ///Efetua a conversao de array de char para um array de int.
   for(i=0;i<11;i++)
   {
-    icpf[i]=n[i]-48;  
+    icpf[i]=n[i]-48;
   }  
   
   ///PRIMEIRO DIGITO.  
-    for(i=0;i<9;i++)  
-  {  
-    somador+=icpf[i]*(10-i);  
+    for(i=0;i<9;i++)
+  {
+    somador+=icpf[i]*(10-i);
   }
   
-  result1=somador%11;  
+  result1=somador%11;
   
-  if( (result1==0) || (result1==1) )  
+  if( (result1==0) || (result1==1) )
   {  
-    digito1=0;  
+    digito1=0;
   }
   
     else  
     {  
-      digito1 = 11-result1;  
+      digito1 = 11-result1;
     }
   
   //SEGUNDO DIGITO.
-  somador=0;  
-  
-  for(i=0;i<10;i++)  
+  somador=0;
+
+  for(i=0;i<10;i++)
   {  
-    somador+=icpf[i]*(11-i);  
+    somador+=icpf[i]*(11-i);
   }
-  
-  valor=(somador/11)*11;  
-  result2=somador-valor;  
-    
-  if( (result2==0) || (result2==1) )  
-  {  
-    digito2=0;  
-  }  
-    
-    else  
-    {  
-      digito2=11-result2;  
+
+  valor=(somador/11)*11;
+  result2=somador-valor;
+
+  if( (result2==0) || (result2==1) )
+  {
+    digito2=0;
+  }
+
+    else
+    {
+      digito2=11-result2;
     }
     
   //RESULTADOS DA VALIDACAO.
-  if((digito1==icpf[9]) && (digito2==icpf[10]))  
-  {  
+  if((digito1==icpf[9]) && (digito2==icpf[10]))
+  {
     printf("\nCPF VALIDADO.\n");
     getchar();
   }
@@ -92,10 +111,10 @@ int validaCpf (char n[])
     {
       printf("CPF INVÁLIDO.\n");
       getchar();
-      return 1;
+      return False;
     }
 
-  return 0;  
+  return True;  
 }
 //----------------------------------------------------
 //
