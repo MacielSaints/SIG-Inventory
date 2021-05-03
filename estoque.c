@@ -49,6 +49,7 @@ struct produtos {
   int dia;
   int mes;
   int ano;
+
   char status;
 
 };
@@ -60,7 +61,7 @@ struct produtos {
 //
 //----------------------------------------------------
 
-void cadastraProduto (void) {
+char cadastraProduto (void) {
 
   Produtos* prod;
   prod = (Produtos*) malloc(sizeof(Produtos));
@@ -99,6 +100,7 @@ void cadastraProduto (void) {
   printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
   getchar();
   telaEstoque();
+  return 0;
 }
 
 //----------------------------------------------------
@@ -107,7 +109,7 @@ void cadastraProduto (void) {
 //
 //----------------------------------------------------
 
-void listaProdutos (void) {
+char listaProdutos (void) {
 
   printf(clear);
   FILE* fp;
@@ -126,7 +128,7 @@ void listaProdutos (void) {
     printf("    Produto: %s\n", prod->nome);                                         
     printf("    Data de registro: %d/%d/%d\n", prod->dia, prod->mes, prod->ano);  
     printf("    Quantidade: %d\n", prod->quantidade);
-    printf("    Valor: R$:%f\n", prod->valor);
+    printf("    Valor: R$:%.2f\n", prod->valor);
     printf("╚═══════════════════════════════════════════════════════════════════╝\n");
     printf("\n\n");
   }
@@ -136,4 +138,5 @@ void listaProdutos (void) {
   printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
   getchar();
   telaEstoque();
+  return 0;
 }

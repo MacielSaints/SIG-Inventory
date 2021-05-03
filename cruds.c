@@ -29,8 +29,6 @@
 //----------------------------------------------------
 
 
-
-
 char menuInicial(void) {
 	char op;
   User* aux;
@@ -59,30 +57,28 @@ return 0;
 
 char estoque(void) {
 	char op;
-
 	do {
-		op = telaEstoque();
-
+    op = telaEstoque();
 		switch (op) {
-			case '1' : 	lista();
+			case '1': lista();
 			  break;
-			case '2' : 	cadastrar();
+			case '2': cadastrar();
         break;
-      case '3' : 	entrada();
+      case '3': entrada();
 				break;
-      case '4' : 	saida();
+      case '4': saida();
 		  	break;
-      case '5' : 	excluir();
+      case '5': excluir();
 			  break;
-      case '6' : 	atualizar();
+      case '6': atualizar();
 			  break;
-      case '7' : 	telaMenuInicial();
+      case '7': telaMenuInicial();
 				break;
-			case '0' : 	telaSair();
+			case '0':  telaSair();
 				break;
-		} 		
-	} while (op != '0');
-return op;
-}
+		}
 
+	} while (op != '0');
+return 0;
+}
 

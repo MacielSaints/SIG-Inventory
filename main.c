@@ -37,7 +37,7 @@ char menuInicial (void);
 //----------------------------------------------------
 
 int main(void) {
-
+  //lista();
 	menuInicial();
   //estoque();
 	return 0;

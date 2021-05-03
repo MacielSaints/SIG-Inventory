@@ -1,2 +1,2 @@
-void cadastraProduto (void);
-void listaProdutos (void);
+char cadastraProduto (void);
+char listaProdutos (void);

@@ -51,6 +51,7 @@ char telaBemVindo(void) {
   printf("║               AO                ║\n");
   printf("║          SIG-Inventory          ║\n");
   printf("╚═════════════════════════════════╝\n");
+  printf("\n\n\n\n\n\t>>> Tecle <ENTER> para continuar...\n");
   return 0;
 }
 
@@ -65,7 +66,6 @@ char telaSigLogin(void) {
 
 char telaMenuInicial(void) {
 	char op;
-  printf(clear);
   sig();
 
   printf("╔══════════════════════════════════╗\n");
@@ -112,10 +112,8 @@ char telaEstoque(void) {
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");
   scanf("%c", &op);
-	printf("\n");
 	getchar();
-
-	return op;
+  return op;
 }
 
 char telaNovoUsuario (void) {
@@ -136,13 +134,15 @@ char telaSair (void) {
   exit(1);
 }
 
-void lista(void) {
+char lista(void) {
   printf(clear);
   listaProdutos();
+  return 0;
 }
-void cadastrar(void) {
+char cadastrar(void) {
   printf(clear);
   cadastraProduto();
+  return 0;
 }
 
 void Indisponivel(void) {

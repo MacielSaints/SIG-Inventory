@@ -58,33 +58,33 @@ struct user {
 //----------------------------------------------------
 
 User* preencheUser(void) {
-  User* aln;
-  aln = (User*) malloc(sizeof(User));
+  User* id;
+  id = (User*) malloc(sizeof(User));
   telaNovoUsuario();
 
   printf("\nInforme seu CPF: ");
-  scanf("%ld", &aln->cpf);
+  scanf("%ld", &id->cpf);
   getchar();
   printf("Senha: ");
-  scanf("%ld", &aln->senha);
+  scanf("%ld", &id->senha);
   getchar();
-  aln->status = 'm';
-  return aln;
+  id->status = 'm';
+  return id;
 }
 
 
-void loginUser(User* al) {
+void loginUser(User* id) {
   char situacao[20];
-  if ((al == NULL) || (al->status == 'x')) {
+  if ((id == NULL) || (id->status == 'x')) {
     printf("\n= = = Usuário Inexistente = = =\n");
   } else {
     telaBemVindo();
     getchar();
-    telaEstoque();
+    estoque();
   }
 }
 
-void gravaUser(User* aln) {
+void gravaUser(User* id) {
   FILE* fp;
   fp = fopen("User.dat", "ab");
   if (fp == NULL) {
@@ -92,27 +92,27 @@ void gravaUser(User* aln) {
     printf("Não é possível continuar este programa...\n");
     exit(1);
   }
-  fwrite(aln, sizeof(User), 1, fp);
+  fwrite(id, sizeof(User), 1, fp);
   fclose(fp);
 }
 
 
 User* buscaUser(void) {
   FILE* fp;
-  User* aln;
-  int id;
+  User* id;
+  int usr;
   int pwd;
 
   telaSigLogin(); 
   printf("Informe seu CPF: "); 
-  scanf("%d", &id);
+  scanf("%d", &usr);
   getchar();
 
   printf("Informe sua senha: "); 
   scanf("%d", &pwd);
   getchar();
 
-  aln = (User*) malloc(sizeof(User));
+  id = (User*) malloc(sizeof(User));
   fp = fopen("User.dat", "rb");
   if (fp == NULL) {
     printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
@@ -120,10 +120,10 @@ User* buscaUser(void) {
     exit(1);
   }
   while(!feof(fp)) {
-    fread(aln, sizeof(User), 1, fp);
-    if ((aln->cpf == id) && (aln->senha == id) && (aln->status != 'x')) {
+    fread(id, sizeof(User), 1, fp);
+    if ((id->cpf == usr) && (id->senha == usr) && (id->status != 'x')) {
       fclose(fp);
-      return aln;
+      return id;
     }else{
       printf("\n\n ~> Entrada Invalida <~,\n");
       getchar();

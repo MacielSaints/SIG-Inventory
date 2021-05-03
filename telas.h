@@ -7,8 +7,8 @@ char telaNovoUsuario (void);
 char telaBemVindo(void);
 char telaSigLogin(void);
 
-void lista(void);
-void cadastrar(void);
+char lista(void);
+char cadastrar(void);
 void entrada(void);
 void saida(void);
 
