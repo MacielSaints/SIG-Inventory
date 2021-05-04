@@ -59,19 +59,23 @@ char estoque(void) {
 	do {
     op = telaEstoque();
 		switch (op) {
-			case '1': lista();
+			case '1': cadastrar();
 			  break;
-			case '2': cadastrar();
+			case '2': entrada();
         break;
-      case '3': entrada();
+      case '3': saida();
 				break;
-      case '4': saida();
+      case '4': excluir();
 		  	break;
-      case '5': excluir();
+      case '5': atualizar();
 			  break;
-      case '6': atualizar();
+      case '6': listaEspecifc();
 			  break;
-      case '7': menuInicial();
+      case '7': lista();
+			  break;
+      case '8': relatorio();
+			  break;
+      case '9': menuInicial();
 				break;
 			case '0': telaSair();
 				break;
@@ -80,4 +84,5 @@ char estoque(void) {
 	} while (op != '0');
 return 0;
 }
+
 

@@ -44,6 +44,17 @@ char sig(void) {
   return 0;
 }
 
+char telaLogin (void) {
+  printf(clear);
+	sig();
+
+	printf("╔═════════════════════════════════╗\n");
+  printf("║              LOGIN              ║\n");
+  printf("╚═════════════════════════════════╝\n");
+  
+  return 0;
+}
+
 char telaBemVindo(void) {
   printf(clear);
 	printf("╔═════════════════════════════════╗\n");
@@ -83,17 +94,6 @@ char telaMenuInicial(void) {
 	return op;
 }
 
-char telaLogin (void) {
-  printf(clear);
-	sig();
-
-	printf("╔═════════════════════════════════╗\n");
-  printf("║              LOGIN              ║\n");
-  printf("╚═════════════════════════════════╝\n");
-  
-  return 0;
-}
-
 char telaEstoque(void) {
 	char op;
   printf(clear);
@@ -102,13 +102,15 @@ char telaEstoque(void) {
   printf("╔══════════════════════════════════╗\n");
   printf("║ ████  CONTROLE DE ESTOQUE  █████ ║\n");
   printf("║══════════════════════════════════║\n");
-  printf("║       1 - Listar                 ║\n");
-  printf("║       2 - Cadastrar              ║\n");
-  printf("║       3 - Computar Entrada       ║\n");
-  printf("║       4 - Computar Saída         ║\n");
-  printf("║       5 - Excluir                ║\n");
-  printf("║       6 - Atualizar              ║\n");
-  printf("║       7 - Voltar                 ║\n");
+  printf("║       1 - Cadastrar              ║\n");
+  printf("║       2 - Computar Entrada       ║\n");
+  printf("║       3 - Computar Saída         ║\n");
+  printf("║       4 - Excluir                ║\n");
+  printf("║       5 - Atualizar              ║\n");
+  printf("║       6 - Produto Especifico     ║\n");
+  printf("║       7 - Todos Produtos         ║\n");
+  printf("║       8 - Relatório              ║\n");
+  printf("║       9 - Voltar                 ║\n");
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");
   scanf("%c", &op);
@@ -148,7 +150,22 @@ char cadastrar(void) {
 void Indisponivel(void) {
     printf("OPÇÃO INDISPONÍVEL!!!\n");
 }
-
+void listaEspecifc(void) {
+  printf(clear);
+	printf("\n\n\nMódulo Produto Especifico\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+void relatorio(void) {
+  printf(clear);
+	printf("\n\n\nMódulo Relatório\n\n\n");
+	printf("\n");
+	printf("\n\n\t\t\t\t<<< Em Desenvolvimento >>>\n\n");
+	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
 void entrada(void) {
   printf(clear);
 	printf("\n\n\nMódulo Computar Entrada\n\n\n");
@@ -165,6 +182,7 @@ void saida(void) {
 	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
+
 void excluir(void) {
   printf(clear);
 	printf("\n\n\nMódulo Excluir\n\n\n");

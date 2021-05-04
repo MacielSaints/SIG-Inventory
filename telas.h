@@ -16,3 +16,6 @@ void excluir(void);
 void atualizar(void);
 void Indisponivel(void);
 void telaSobre(void);
+
+void listaEspecifc(void);
+void relatorio(void);

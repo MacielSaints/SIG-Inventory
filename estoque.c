@@ -32,7 +32,7 @@
 #define True 1
 #define False 0
 
-typedef struct produtos Produtos;
+typedef struct cadProdutos Produtos;
 typedef struct Produtos prod;
 
 //----------------------------------------------------
@@ -41,9 +41,21 @@ typedef struct Produtos prod;
 //
 //----------------------------------------------------
 
-struct produtos {
+struct cadProdutos {
   
+  char codBarras;
   char nome[80];
+  int quantidade;
+  float valor;
+  int dia;
+  int mes;
+  int ano;
+
+  char status;
+
+};
+struct entProdutos {
+  
   int quantidade;
   float valor;
   int dia;
@@ -72,7 +84,7 @@ char cadastraProduto (void) {
 		printf("Erro na criacao do arquivo\n!");
 		exit(1);
   }
-
+  sig();
   printf("\nDigite o nome do produto: ");
   scanf(" %80[^\n]", prod->nome);
 
