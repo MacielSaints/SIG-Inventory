@@ -104,17 +104,16 @@ int validaCpf (char n[])
   //RESULTADOS DA VALIDACAO.
   if((digito1==icpf[9]) && (digito2==icpf[10]))
   {
-    printf("\nCPF VALIDADO.\n");
-    getchar();
+    printf("CPF VALIDADADO!\n\n");
   }
     else
     {
       printf("CPF INVÁLIDO.\n");
       getchar();
-      return False;
+      menuInicial();
     }
 
-  return True;  
+  return icpf[i];  
 }
 //----------------------------------------------------
 //

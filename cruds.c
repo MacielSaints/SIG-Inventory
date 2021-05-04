@@ -40,8 +40,7 @@ char menuInicial(void) {
     case '1': aux = buscaUser();
               loginUser(aux);
               break;
-    case '2': 
-    aux = preencheUser();
+    case '2': aux = preencheUser();
               gravaUser(aux);
               break;
     case '3': telaSobre();
@@ -72,9 +71,9 @@ char estoque(void) {
 			  break;
       case '6': atualizar();
 			  break;
-      case '7': telaMenuInicial();
+      case '7': menuInicial();
 				break;
-			case '0':  telaSair();
+			case '0': telaSair();
 				break;
 		}
 

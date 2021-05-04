@@ -73,7 +73,7 @@ char telaMenuInicial(void) {
   printf("║══════════════════════════════════║\n");
   printf("║          1 - Login               ║\n");
   printf("║          2 - Novo Usuário        ║\n");
-  printf("║          3 - Sober               ║\n");
+  printf("║          3 - Sobre               ║\n");
   printf("║          0 - Exit                ║\n");
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");

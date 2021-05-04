@@ -42,7 +42,7 @@ typedef struct Produtos prod;
 //----------------------------------------------------
 
 struct produtos {
-
+  
   char nome[80];
   int quantidade;
   float valor;

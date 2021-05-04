@@ -20,9 +20,7 @@
 #include "valid.h"
 #include "telas.h"
 #include "cruds.h"
-#include "estoque.h"
-
-
+#include "valid.h"
 
 //----------------------------------------------------
 //
@@ -44,8 +42,8 @@ typedef struct user User;
 //----------------------------------------------------
 
 struct user {
-  long int cpf;
-  long int senha;
+long long cpf;
+long long senha;
 
   char status;
 };
@@ -58,15 +56,17 @@ struct user {
 //----------------------------------------------------
 
 User* preencheUser(void) {
+  char aux[12];
   User* id;
   id = (User*) malloc(sizeof(User));
   telaNovoUsuario();
 
-  printf("\nInforme seu CPF: ");
-  scanf("%ld", &id->cpf);
+  printf("\nInforme seu CPF (Sómente N°s.): ");
+  scanf("%s", aux);
+  id->cpf = validaCpf(aux);
   getchar();
   printf("Senha: ");
-  scanf("%ld", &id->senha);
+  scanf("%llu", &id->senha);
   getchar();
   id->status = 'm';
   return id;
@@ -96,20 +96,19 @@ void gravaUser(User* id) {
   fclose(fp);
 }
 
-
 User* buscaUser(void) {
   FILE* fp;
   User* id;
-  int usr;
-  int pwd;
+  long long usr;
+  long long pwd;
 
   telaSigLogin(); 
   printf("Informe seu CPF: "); 
-  scanf("%d", &usr);
+  scanf("%llu", &usr);
   getchar();
 
   printf("Informe sua senha: "); 
-  scanf("%d", &pwd);
+  scanf("%llu", &pwd);
   getchar();
 
   id = (User*) malloc(sizeof(User));
@@ -121,7 +120,7 @@ User* buscaUser(void) {
   }
   while(!feof(fp)) {
     fread(id, sizeof(User), 1, fp);
-    if ((id->cpf == usr) && (id->senha == usr) && (id->status != 'x')) {
+    if ((id->cpf == usr) && (id->senha == pwd) && (id->status != 'x')) {
       fclose(fp);
       return id;
     }else{
