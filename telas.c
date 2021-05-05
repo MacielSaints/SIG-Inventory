@@ -116,7 +116,7 @@ char telaEstoque(void) {
   scanf("%c", &op);
 	getchar();
   return op;
-
+}
 char telaNovoUsuario (void) {
   printf(clear);
   sig();
