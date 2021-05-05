@@ -108,15 +108,14 @@ char telaEstoque(void) {
   printf("║       4 - Excluir                ║\n");
   printf("║       5 - Atualizar              ║\n");
   printf("║       6 - Produto Especifico     ║\n");
-  printf("║       7 - Todos Produtos         ║\n");
-  printf("║       8 - Relatório              ║\n");
-  printf("║       9 - Voltar                 ║\n");
+  printf("║       7 - Relatório              ║\n");
+  printf("║       8 - Volta                  ║\n");
+  printf("║       0 - Exit                   ║\n");
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");
   scanf("%c", &op);
 	getchar();
   return op;
-}
 
 char telaNovoUsuario (void) {
   printf(clear);
@@ -143,7 +142,7 @@ char lista(void) {
 }
 char cadastrar(void) {
   printf(clear);
-  cadastraProduto();
+  //cadastraProduto();
   return 0;
 }
 

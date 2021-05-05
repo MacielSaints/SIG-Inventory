@@ -12,7 +12,6 @@
 /// BIBLIOTECAS
 //
 //----------------------------------------------------
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,8 +31,7 @@
 #define True 1
 #define False 0
 
-typedef struct cadProdutos Produtos;
-typedef struct Produtos prod;
+typedef struct produtos Produtos;
 
 //----------------------------------------------------
 //
@@ -41,10 +39,11 @@ typedef struct Produtos prod;
 //
 //----------------------------------------------------
 
-struct cadProdutos {
-  
-  char codBarras;
+struct produtos {
+
+  long long codBarras;
   char nome[80];
+  char marca[32];
   int quantidade;
   float valor;
   int dia;
@@ -52,103 +51,253 @@ struct cadProdutos {
   int ano;
 
   char status;
-
 };
-struct entProdutos {
-  
-  int quantidade;
-  float valor;
-  int dia;
-  int mes;
-  int ano;
-
-  char status;
-
-};
-
 
 //----------------------------------------------------
 //
-/// FUNÇÃO CADASTRO DE PRODUTOS
+/// FUNÇÕES CONTROLE DE ESTOQUE
 //
 //----------------------------------------------------
 
-char cadastraProduto (void) {
-
+Produtos* preencheProduto(void) {
   Produtos* prod;
   prod = (Produtos*) malloc(sizeof(Produtos));
-  FILE *fp;
-  fp = fopen("Produtos.txt", "at");
-
-	if (fp == NULL){
-		printf("Erro na criacao do arquivo\n!");
-		exit(1);
-  }
   sig();
-  printf("\nDigite o nome do produto: ");
+
+  printf("\nInforme a Código de Barras: ");
+  scanf("%lld", &prod->codBarras);
+
+  printf("Informe o Nome do Produto: ");
   scanf(" %80[^\n]", prod->nome);
 
-  printf("\nDigite a quantidade: ");
+  printf("Informe a Marca do Produto: ");
+  scanf(" %32[^\n]", prod->marca);
+
+  printf("Informe a Quantidade: ");
   scanf("%i", &prod->quantidade);
 
-  printf("\nDigite o valor: ");
+  printf("Informe o Valor Unitário: ");
   scanf("%f", &prod->valor);
 
   printf("\nInforme a data de entrada do produto (dd/mm/aaaa): ");
   scanf("%d/%d/%d",&prod->dia, &prod->mes, &prod->ano);
   getchar();
-
   while(!dataValida(prod->dia, prod->mes, prod->ano)){
     printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
-      scanf("%d/%d/%d",&prod->dia, &prod->mes, &prod->ano);
-      getchar();
+    scanf("%d/%d/%d",&prod->dia, &prod->mes, &prod->ano);
+    getchar();
   }
-  
-  fwrite(prod, sizeof(Produtos), 1, fp);
-  fclose(fp);
-  free(prod);
 
-  printf("\nNovo Produto Cadastrado com Sucesso!\n");
-  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-  getchar();
-  telaEstoque();
-  return 0;
+  prod->status = 'd';
+
+  return prod;
 }
 
-//----------------------------------------------------
-//
-/// FUNÇÃO LISTA DE PRODUTOS
-//
-//----------------------------------------------------
 
-char listaProdutos (void) {
+void exibeProduto(Produtos* pd) {
+  char situacao[20];
 
-  printf(clear);
-  FILE* fp;
-  Produtos* prod;
-  fp = fopen("Produtos.txt", "rt");
-  if (fp == NULL){
-    printf("\nErro na abertura do arquivo\n!");
-  }
-  prod = (Produtos*) malloc(sizeof(Produtos));
-
-  sig();
-  
-  while (fread(prod, sizeof(Produtos), 1, fp)) {
-
+  if ((pd == NULL) || (pd->status == 'x')) {
+    printf("\n ═══════ Produto Inexistente ═══════\n");
+    estoque();
+  } else {
+    sig();
     printf("╔═══════════════════════════════════════════════════════════════════╗\n");
-    printf("    Produto: %s\n", prod->nome);                                         
-    printf("    Data de registro: %d/%d/%d\n", prod->dia, prod->mes, prod->ano);  
-    printf("    Quantidade: %d\n", prod->quantidade);
-    printf("    Valor: R$:%.2f\n", prod->valor);
+    printf("    Código de Barras: %lld\n", pd->codBarras);
+    printf("    Produto: %s\n", pd->nome);
+    printf("    Produto: %s\n", pd->marca);
+    printf("    Quantidade: %d\n", pd->quantidade); 
+    printf("    Valor Unitário: R$:%.2f\n", pd->valor);
+    printf("    Data de registro: %d/%d/%d\n", pd->dia, pd->mes, pd->ano);
     printf("╚═══════════════════════════════════════════════════════════════════╝\n");
     printf("\n\n");
+
+    if (pd->status == 'd') {
+      strcpy(situacao, "Disponível");
+    } else if (pd->status == 'i') {
+      strcpy(situacao, "Indisponível");
+    } else {
+      strcpy(situacao, "Não informada");
+    }
+    printf("Situação do Produto: %s\n", situacao);
+    getchar();
+  }
+}
+
+void gravaProduto(Produtos* prod) {
+  FILE* fp;
+  fp = fopen("Produtos.dat", "ab");
+
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(prod, sizeof(Produtos), 1, fp);
+  fclose(fp);
+}
+
+
+
+Produtos* buscaProduto(void) {
+  FILE* fp;
+  Produtos* prod;
+  int aux;
+
+  sig();
+  printf("Códiogo de Barras: "); 
+  scanf("%d", &aux);
+  getchar();
+
+  prod = (Produtos*) malloc(sizeof(Produtos));
+  fp = fopen("Produtos.dat", "rb");
+
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
   }
 
+  while(!feof(fp)) {
+    fread(prod, sizeof(Produtos), 1, fp);
+    if ((prod->codBarras == aux) && (prod->status != 'x')) {
+      fclose(fp);
+      return prod;
+    }
+  }
   fclose(fp);
-  free(prod);
-  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-  getchar();
-  telaEstoque();
+  return NULL;
+}
+
+
+void listaProdutos(void) {
+  FILE* fp;
+  Produtos* prod;
+  sig();
+
+  printf("\n = Lista de Produtos = \n"); 
+  prod = (Produtos*) malloc(sizeof(Produtos));
+  fp = fopen("Produtos.dat", "rb");
+
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(prod, sizeof(Produtos), 1, fp)) {
+    if (prod->status != 'x') {
+      exibeProduto(prod);
+    }
+  }
+  fclose(fp);
+}
+
+void listaProdutosPorMarca(void) {
+  FILE* fp;
+  char aux[32];
+  Produtos* prod;
+  sig();
+
+  printf("\n = Lista Produtos por Marca= \n"); 
+  printf("\n = Busca Produto = \n"); 
+  printf("Informe Marca: "); 
+  scanf(" %32[^\n]", aux);
+  prod = (Produtos*) malloc(sizeof(Produtos));
+  fp = fopen("Produtos.dat", "rb");
+
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(prod, sizeof(Produtos), 1, fp)) {
+    if (strcmp(prod->marca, aux) == 0 && (prod->status != 'x')) {
+      exibeProduto(prod);
+    }
+  }
+  fclose(fp);
+}
+
+Produtos* atualizaProduto(Produtos* pd) {
+  char situacao[20];
+  FILE *fp;
+  fp = fopen("Produtos.dat", "r+b");
+
+  if ((pd == NULL) || (pd->status == 'x')) {
+    printf("\n= = = Produto Inexistente = = =\n");
+  } else {
+    sig();
+    Produtos* prod;
+    pd = (Produtos*) malloc(sizeof(Produtos));
+    sig();
+
+    printf("    Código de Barras: %lld\n", pd->codBarras);
+
+    printf("Informe o Nome do Produto: ");
+    scanf(" %80[^\n]", pd->nome);
+
+    printf("Informe a Marca do Produto: ");
+    scanf(" %32[^\n]", pd->marca);
+
+    printf("Informe a Quantidade: ");
+    scanf("%i", &pd->quantidade);
+
+    printf("Informe o Valor Unitário: ");
+    scanf("%f", &pd->valor);
+
+    printf("\nInforme a data de entrada do produto (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&pd->dia, &pd->mes, &pd->ano);
+    getchar();
+    while(!dataValida(pd->dia, pd->mes, pd->ano)){
+      printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+      scanf("%d/%d/%d",&pd->dia, &pd->mes, &pd->ano);
+      getchar();
+    }
+
+    pd->status = 'd';
+    fseek(fp, -1*sizeof(Produtos), SEEK_CUR);
+    fwrite(pd, sizeof(Produtos), 1, fp);
+    printf("\n═══════ Produto Alterado ═══════\n");
+    getchar();
+  }
+  fclose(fp);
+  free(pd);
   return 0;
 }
+
+void excluiProduto(Produtos* p) {
+  FILE* fp;
+  Produtos* prodArq;
+  int aux;
+  int achou = 0;
+  if (p == NULL) {
+    printf("Ops! O Produto Informado Não Existe!\n");
+    getchar();
+  }
+  else {
+    prodArq = (Produtos*) malloc(sizeof(Produtos));
+    fp = fopen("Produtos.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+      printf("Não é possível continuar este programa...\n");
+      exit(1);
+    }
+    while(!feof(fp)) {
+      fread(prodArq, sizeof(Produtos), 1, fp);
+      if ((prodArq->codBarras == p->codBarras) && (prodArq->status != 'x')) {
+        achou = 1;
+        prodArq->status = 'x';
+        fseek(fp, -1*sizeof(Produtos), SEEK_CUR);
+        fwrite(prodArq, sizeof(Produtos), 1, fp);
+        printf("\nProduto excluído com sucesso!!!\n");
+        getchar();
+      }
+    }
+    if (!achou) {
+      printf("\nProduto não encontrado!\n");
+      getchar();
+    }
+    fclose(fp);
+  }
+}
+

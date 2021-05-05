@@ -53,36 +53,38 @@ char menuInicial(void) {
 return 0;
 }
 
-
 char estoque(void) {
 	char op;
-	do {
-    op = telaEstoque();
-		switch (op) {
-			case '1': cadastrar();
-			  break;
-			case '2': entrada();
-        break;
-      case '3': saida();
-				break;
-      case '4': excluir();
-		  	break;
-      case '5': atualizar();
-			  break;
-      case '6': listaEspecifc();
-			  break;
-      case '7': lista();
-			  break;
-      case '8': relatorio();
-			  break;
-      case '9': menuInicial();
-				break;
-			case '0': telaSair();
-				break;
-		}
+  Produtos* aux;
 
-	} while (op != '0');
+  do {
+    op = telaEstoque();
+
+    switch (op) {
+    case '1': aux = preencheProduto();
+              gravaProduto(aux);
+              break;
+    case '2': aux = buscaProduto();
+              exibeProduto(aux);
+              break;
+    case  '3' :aux = buscaProduto();
+              atualizaProduto(aux);
+              break;
+    case '4': aux = buscaProduto();
+              excluiProduto(aux);
+              break;
+    case '5': listaProdutos();
+              break;
+    case '6': listaProdutosPorMarca();
+              break;
+    case '7': relatorio();
+			        break;
+    case '8': menuInicial();
+				break;
+    case '0': telaSair();
+               break;
+    }
+  } while (op != '0');
+  free(aux);
 return 0;
 }
-
-
