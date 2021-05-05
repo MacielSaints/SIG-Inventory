@@ -42,8 +42,8 @@ typedef struct user User;
 //----------------------------------------------------
 
 struct user {
-long long cpf;
-long long senha;
+  long long cpf;
+  long long senha;
 
   char status;
 };

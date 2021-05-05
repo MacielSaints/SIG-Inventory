@@ -6,3 +6,4 @@ void gravaUser(User*);
 User* buscaUser(void);
 User* preencheUser(void);
 char menuInicial(void);
+char rtCpf(User*); 

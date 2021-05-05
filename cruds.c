@@ -20,6 +20,7 @@
 #include "valid.h"
 #include "estoque.h"
 #include "usuario.h"
+#include "relatorios.h"
 
 
 //----------------------------------------------------
@@ -27,7 +28,6 @@
 /// CRUDs
 //
 //----------------------------------------------------
-
 
 char menuInicial(void) {
 	char op;
@@ -64,25 +64,29 @@ char estoque(void) {
     case '1': aux = preencheProduto();
               gravaProduto(aux);
               break;
-    case '2': aux = buscaProduto();
-              exibeProduto(aux);
+    case  '2' :aux = buscaProduto();
+              entradaProduto(aux);
               break;
     case  '3' :aux = buscaProduto();
-              atualizaProduto(aux);
+              saidaProduto(aux);
               break;
     case '4': aux = buscaProduto();
+              exibeProduto(aux);
+              break;
+    case  '5' :aux = buscaProduto();
+              atualizaProduto(aux);
+              break;
+    case '6': aux = buscaProduto();
               excluiProduto(aux);
               break;
-    case '5': listaProdutos();
+    case '7': listaProdutos();
               break;
-    case '6': listaProdutosPorMarca();
+    case '8': listaProdutosPorMarca();
               break;
-    case '7': relatorio();
+    case '9': relatorio();
 			        break;
-    case '8': menuInicial();
+    case '0': menuInicial();
 				break;
-    case '0': telaSair();
-               break;
     }
   } while (op != '0');
   free(aux);

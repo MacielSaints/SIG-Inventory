@@ -19,6 +19,7 @@
 #include "telas.h"
 #include "cruds.h"
 #include "usuario.h"
+#include "relatorios.h"
 
 
 //----------------------------------------------------
@@ -37,8 +38,8 @@ char menuInicial (void);
 //----------------------------------------------------
 
 int main(void) {
-  //lista();
+
 	menuInicial();
-  //estoque();
+
 	return 0;
 }

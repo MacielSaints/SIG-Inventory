@@ -11,3 +11,5 @@ void listaProdutos(void);
 void listaProdutosPorMarca(void);
 void excluiProduto(Produtos*);
 Produtos* atualizaProduto(Produtos* pd);
+Produtos* entradaProduto(Produtos* pd);
+Produtos* saidaProduto(Produtos* pd);

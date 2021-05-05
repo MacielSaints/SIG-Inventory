@@ -20,6 +20,8 @@
 #include "cruds.h"
 #include "valid.h"
 #include "usuario.h"
+#include "relatorios.h"
+
 
 
 //----------------------------------------------------
@@ -105,12 +107,13 @@ char telaEstoque(void) {
   printf("║       1 - Cadastrar              ║\n");
   printf("║       2 - Computar Entrada       ║\n");
   printf("║       3 - Computar Saída         ║\n");
-  printf("║       4 - Excluir                ║\n");
-  printf("║       5 - Atualizar              ║\n");
-  printf("║       6 - Produto Especifico     ║\n");
-  printf("║       7 - Relatório              ║\n");
-  printf("║       8 - Volta                  ║\n");
-  printf("║       0 - Exit                   ║\n");
+  printf("║       4 - Exibe Produto          ║\n");
+  printf("║       5 - Atualiza Produto       ║\n");
+  printf("║       6 - Exclui                 ║\n");
+  printf("║       7 - Lista Produtos         ║\n");
+  printf("║       8 - Produtos Por Marca     ║\n");
+  printf("║       9 - Relatório              ║\n");
+  printf("║       0 - Menu                   ║\n");
   printf("╚══════════════════════════════════╝\n");
   printf("~>: ");
   scanf("%c", &op);
@@ -126,7 +129,6 @@ char telaNovoUsuario (void) {
 
   return 0;
 }
-
 
 char telaSair (void) {
   sig();

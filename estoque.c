@@ -20,6 +20,7 @@
 #include "telas.h"
 #include "cruds.h"
 #include "usuario.h"
+#include "relatorios.h"
 
 //----------------------------------------------------
 //
@@ -78,6 +79,7 @@ Produtos* preencheProduto(void) {
 
   printf("Informe o Valor Unitário: ");
   scanf("%f", &prod->valor);
+
 
   printf("\nInforme a data de entrada do produto (dd/mm/aaaa): ");
   scanf("%d/%d/%d",&prod->dia, &prod->mes, &prod->ano);
@@ -169,7 +171,6 @@ Produtos* buscaProduto(void) {
   return NULL;
 }
 
-
 void listaProdutos(void) {
   FILE* fp;
   Produtos* prod;
@@ -201,7 +202,7 @@ void listaProdutosPorMarca(void) {
   printf("\n = Lista Produtos por Marca= \n"); 
   printf("\n = Busca Produto = \n"); 
   printf("Informe Marca: "); 
-  scanf(" %32[^\n]", aux);
+  scanf(" %s", aux);
   prod = (Produtos*) malloc(sizeof(Produtos));
   fp = fopen("Produtos.dat", "rb");
 
@@ -216,6 +217,91 @@ void listaProdutosPorMarca(void) {
     }
   }
   fclose(fp);
+}
+
+Produtos* entradaProduto(Produtos* pd) {
+  char situacao[20];
+  int aux;
+  FILE *fp;
+  fp = fopen("Produtos.dat", "r+b");
+
+  if ((pd == NULL) || (pd->status == 'x')) {
+    printf("\n= = = Produto Inexistente = = =\n");
+  } else {
+    sig();
+    Produtos* prod;
+    pd = (Produtos*) malloc(sizeof(Produtos));
+    sig();
+
+    printf("    Código de Barras: %lld\n", pd->codBarras);
+
+    printf("\n═══════ %s ═══════\n", pd->nome);
+    printf("    %s \n", pd->marca);
+    printf("       R$:%.2f \n", pd->valor);
+    printf("\n═══ Quantidade Atual: %i ═══\n", pd->quantidade);
+
+    printf("Informe a Quantidade: ");
+    scanf("%i", &aux);
+    pd->quantidade += aux;
+    getchar();
+
+    printf("\n═══ Quantidade Atualizada: %i ═══\n", pd->quantidade);
+
+
+    pd->status = 'd';
+    fseek(fp, -1*sizeof(Produtos), SEEK_CUR);
+    fwrite(pd, sizeof(Produtos), 1, fp);
+    printf("\n═══════ Entrada Computada! ═══════\n");
+    getchar();
+  }
+  fclose(fp);
+  free(pd);
+  return 0;
+}
+
+Produtos* saidaProduto(Produtos* pd) {
+  char situacao[20];
+  int aux;
+  FILE *fp;
+  fp = fopen("Produtos.dat", "r+b");
+
+  if ((pd == NULL) || (pd->status == 'x')) {
+    printf("\n= = = Produto Inexistente = = =\n");
+  } else {
+    sig();
+    Produtos* prod;
+    pd = (Produtos*) malloc(sizeof(Produtos));
+    sig();
+
+    printf("    Código de Barras: %lld\n", pd->codBarras);
+
+    printf("\n═══════ %s ═══════\n", pd->nome);
+    printf("    %s \n", pd->marca);
+    printf("       R$:%.2f \n", pd->valor);
+    printf("\n═══ Quantidade Atual: %i ═══\n", pd->quantidade);
+
+    printf("Informe a Quantidade: ");
+    scanf("%i", &aux);
+    if (pd->quantidade < 0){
+      printf("O Não há Unidades Suficientes Em Estoque.");
+      getchar();
+      estoque();
+    }
+    pd->quantidade -= aux;
+    getchar();
+
+    printf("\n═══ Quantidade Atualizada: %i ═══\n", pd->quantidade);
+
+
+    pd->status = 'd';
+    fseek(fp, -1*sizeof(Produtos), SEEK_CUR);
+    fwrite(pd, sizeof(Produtos), 1, fp);
+    printf("\n═══════ Saída Computada! ═══════\n");
+    getchar();
+  }
+  fclose(fp);
+  free(pd);
+  return 0;
 }
 
 Produtos* atualizaProduto(Produtos* pd) {
@@ -300,4 +386,3 @@ void excluiProduto(Produtos* p) {
     fclose(fp);
   }
 }
-
